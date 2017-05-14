@@ -13,8 +13,10 @@ Documentation:
   Exclude:
     - 'app/helpers/**/*'
     - 'app/controllers/**/*'
+    - 'app/mailers/**/*'
     - 'config/**/*'
     - 'db/migrate/*'
+    - 'app/models/application_record.rb'
 
 Metrics/AbcSize:
   Max: 30
