@@ -10,26 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514213721) do
+ActiveRecord::Schema.define(version: 20170514215600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
     t.bigint "lift_id"
-    t.integer "sets"
-    t.integer "reps"
+    t.integer "sets", null: false
+    t.integer "reps", null: false
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "weight", precision: 100, scale: 6
-    t.string "units"
+    t.decimal "weight", precision: 100, scale: 6, null: false
+    t.string "units", null: false
     t.index ["lift_id"], name: "index_entries_on_lift_id"
   end
 
   create_table "lifts", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_lifts_on_user_id"
@@ -37,15 +37,15 @@ ActiveRecord::Schema.define(version: 20170514213721) do
 
   create_table "nicknames", force: :cascade do |t|
     t.bigint "lift_id"
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["lift_id"], name: "index_nicknames_on_lift_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
+    t.string "email", null: false
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
