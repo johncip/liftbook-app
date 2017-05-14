@@ -10,9 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170514210728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "entries", force: :cascade do |t|
+    t.bigint "lift_id"
+    t.integer "sets"
+    t.integer "reps"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lift_id"], name: "index_entries_on_lift_id"
+  end
+
+  create_table "lifts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_lifts_on_user_id"
+  end
+
+  create_table "nicknames", force: :cascade do |t|
+    t.bigint "lift_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lift_id"], name: "index_nicknames_on_lift_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "entries", "lifts"
+  add_foreign_key "lifts", "users"
+  add_foreign_key "nicknames", "lifts"
 end
