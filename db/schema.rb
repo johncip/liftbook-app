@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514210728) do
+ActiveRecord::Schema.define(version: 20170514213721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20170514210728) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "weight", precision: 100, scale: 6
+    t.string "units"
     t.index ["lift_id"], name: "index_entries_on_lift_id"
   end
 
