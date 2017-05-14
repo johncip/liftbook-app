@@ -1,0 +1,115 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - 'script/**/*'
+    - 'public/**/*'
+    - 'ansible/**/*'
+    - 'db/schema.rb'
+  TargetRubyVersion: 2.3
+
+Documentation:
+  Exclude:
+    - 'app/helpers/**/*'
+    - 'app/controllers/**/*'
+    - 'config/**/*'
+    - 'db/migrate/*'
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/BlockLength:
+  Enabled: false
+  Exclude:
+    - 'spec/**/*'
+    - 'db/seeds/**/*.rb'
+    - 'config/routes.rb'
+    - 'config/environments/*.rb'
+    - 'Gemfile'
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/LineLength:
+  Max: 100
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+    - http
+    - https
+  Exclude:
+    - 'db/migrate/*'
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - 'db/migrate/*'
+
+Metrics/ModuleLength:
+  Max: 150
+
+Rails:
+  Enabled: true
+
+Style/AlignParameters:
+  # Alignment of parameters in multi-line method calls.
+  #
+  # The `with_first_parameter` style aligns the following lines along the same
+  # column as the first parameter.
+  #
+  #     method_call(a,
+  #                 b)
+  #
+  # The `with_fixed_indentation` style aligns the following lines with one
+  # level of indentation relative to the start of the line with the method call.
+  #
+  #     method_call(a,
+  #       b)
+  EnforcedStyle: with_first_parameter
+
+Style/AutoResourceCleanup:
+  Description: 'Suggests the usage of an auto resource cleanup version of a method (if available).'
+  Enabled: true
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Style/CollectionMethods:
+  Description: 'Preferred collection methods.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#map-find-select-reduce-size'
+  Enabled: true
+
+Style/ConstantName:
+  Exclude:
+    - 'app/uploaders/base_uploader.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: aligned
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+  EnforcedStyleForEmptyBraces: no_space
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/WordArray:
+  EnforcedStyle: percent
+  MinSize: 3
