@@ -1,0 +1,166 @@
+---
+Attribute:
+  enabled: true
+  exclude: []
+BooleanParameter:
+  enabled: true
+  exclude: []
+ClassVariable:
+  enabled: true
+  exclude: []
+ControlParameter:
+  enabled: true
+  exclude: []
+DataClump:
+  enabled: true
+  exclude:
+    - 'CustomFormBuilder'
+    - 'CustomFormTagHelper'
+  max_copies: 2
+  min_clump_size: 2
+DuplicateMethodCall:
+  enabled: false
+  exclude: []
+  max_calls: 1
+FeatureEnvy:
+  enabled: false
+  exclude: []
+InstanceVariableAssumption:
+  exclude:
+    - !ruby/regexp /(.*)Worker/
+IrresponsibleModule:
+  enabled: false
+  exclude: []
+LongParameterList:
+  enabled: true
+  exclude: []
+  max_params: 3
+  overrides:
+    initialize:
+      max_params: 5
+LongYieldList:
+  enabled: true
+  exclude: []
+  max_params: 3
+ModuleInitialize:
+  enabled: true
+  exclude: []
+NestedIterators:
+  enabled: true
+  exclude: []
+  max_allowed_nesting: 1
+  ignore_iterators:
+  - tap
+  - generate
+  - build_cached_hash
+  - open
+  - with_tempfile
+  - respond_to
+  - mktmpdir
+  - lambda
+NilCheck:
+  enabled: false
+  exclude: []
+PrimaDonnaMethod:
+  enabled: true
+  exclude: []
+RepeatedConditional:
+  enabled: true
+  exclude: []
+  max_ifs: 2
+TooManyInstanceVariables:
+  enabled: true
+  exclude: []
+  max_instance_variables: 10
+TooManyMethods:
+  enabled: true
+  exclude: []
+  max_methods: 15
+TooManyStatements:
+  enabled: true
+  exclude:
+  - initialize
+  max_statements: 10
+UncommunicativeMethodName:
+  enabled: false
+  exclude:
+    - do_GET # This is part of the Webrick Servlet interface
+  reject:
+  - !ruby/regexp /^[a-z]$/
+  - !ruby/regexp /[0-9]$/
+  - !ruby/regexp /[A-Z]/
+  accept: []
+UncommunicativeModuleName:
+  enabled: true
+  exclude: []
+  reject:
+  - !ruby/regexp /^.$/
+  - !ruby/regexp /[0-9]$/
+  accept: []
+UncommunicativeParameterName:
+  enabled: true
+  exclude: []
+  reject:
+  - !ruby/regexp /^.$/
+  - !ruby/regexp /[0-9]$/
+  - !ruby/regexp /[A-Z]/
+  - !ruby/regexp /^_/
+  accept:
+  - x1
+  - x2
+  - y1
+  - y2
+UnusedParameters:
+  enabled: true
+  exclude: []
+UnusedPrivateMethod:
+  enabled: false
+  exclude: []
+UtilityFunction:
+  enabled: true
+  exclude: []
+  public_methods_only: true
+ControlParameter:
+  exclude:
+  - ABETReportExporter#point_color
+  - ABETReportExporter#pretty_weight
+FeatureEnvy:
+  exclude:
+  - ABETReportExporter#add_rubric_item
+  - ABETReportExporter#pretty_weight
+TooManyMethods:
+  exclude:
+  - ABETReportExporter
+  - ABETReportPresenter
+
+"app/controllers":
+  InstanceVariableAssumption:
+    enabled: false
+
+"app/mailers":
+  InstanceVariableAssumption:
+    enabled: false
+
+"app/helpers":
+  FeatureEnvy:
+    enabled: false
+  UtilityFunction:
+    enabled: false
+
+"db/migrate":
+  UncommunicativeVariableName:
+    enabled: false
+  FeatureEnvy:
+    enabled: false
+
+"spec":
+  FeatureEnvy:
+    enabled: false
+  UncommunicativeVariableName:
+    enabled: false
+  UtilityFunction:
+    enabled: false
+
+exclude_paths:
+  - script
+  - public
