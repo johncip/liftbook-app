@@ -11,9 +11,11 @@
 #  updated_at :datetime         not null
 #  weight     :decimal(100, 6)  not null
 #  units      :string           not null
+#  workout_id :integer
 #
 
 # A workout log entry.
 class Entry < ApplicationRecord
   has_one :lift
+  belongs_to :workout
 end
