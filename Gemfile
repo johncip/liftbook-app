@@ -39,4 +39,8 @@ group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # linters
+  gem 'rubocop', require: false
+  gem 'reek', require: false
 end
