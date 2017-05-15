@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514215600) do
+ActiveRecord::Schema.define(version: 20170515002545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20170514215600) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower((name)::text)", name: "lifts_lower_name_idx", unique: true
     t.index ["user_id"], name: "index_lifts_on_user_id"
   end
 
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20170514215600) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower((name)::text)", name: "nicknames_lower_name_idx", unique: true
     t.index ["lift_id"], name: "index_nicknames_on_lift_id"
   end
 
@@ -48,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170514215600) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index "lower((email)::text)", name: "users_lower_email_idx", unique: true
   end
 
   add_foreign_key "entries", "lifts"

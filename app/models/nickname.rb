@@ -9,7 +9,8 @@
 #  updated_at :datetime         not null
 #
 
-# An alternate name for a lift. e.g. "bp" or "bench" for "bench press".
+# An alternate name for a lift. e.g. "bp" for "bench press".
 class Nickname < ApplicationRecord
   belongs_to :lift
+  validates :name, uniqueness: true
 end
