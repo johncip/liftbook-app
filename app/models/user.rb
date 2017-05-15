@@ -9,5 +9,8 @@
 #  updated_at :datetime         not null
 #
 
+# A Liftbook user.
 class User < ApplicationRecord
+  before_validation { |u| u.email = u.email.downcase }
+  validates :email, uniqueness: true
 end
