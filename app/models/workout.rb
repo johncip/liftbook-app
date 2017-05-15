@@ -10,4 +10,6 @@
 #
 
 class Workout < ApplicationRecord
+  has_many :entries
+  validates :email, uniqueness: true
 end
