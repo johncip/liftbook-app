@@ -12,5 +12,7 @@
 # A unique lift within this user's workout log.
 class Lift < ApplicationRecord
   belongs_to :user
+  has_many :entries
+
   validates :name, uniqueness: true
 end

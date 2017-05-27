@@ -16,7 +16,7 @@
 
 # A workout log entry.
 class Entry < ApplicationRecord
-  has_one :lift
+  belongs_to :lift
   belongs_to :workout
 
   before_save -> { self.units ||= :lb }
