@@ -12,8 +12,8 @@
 
 # A Liftbook user.
 class User < ApplicationRecord
-  # has_many :workouts
-  # has_many :entries, through: :workouts
+  has_many :workouts
+  has_many :entries, through: :workouts
 
   validates :email, uniqueness: true
 
