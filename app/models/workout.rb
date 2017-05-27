@@ -11,5 +11,8 @@
 
 class Workout < ApplicationRecord
   has_many :entries
-  validates :email, uniqueness: true
+
+  # TODO: Workouts need some kind of user-friendly unique identifier.
+  #       but not the date, since you can workout more than once per day.
+  validates :date, uniqueness: true
 end
