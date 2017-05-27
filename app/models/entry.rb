@@ -18,4 +18,7 @@
 class Entry < ApplicationRecord
   has_one :lift
   belongs_to :workout
+
+  before_save -> { self.units ||= :lb }
+  validates :units, inclusion: { in: %w(lb kg) }
 end
