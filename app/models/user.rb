@@ -11,6 +11,9 @@
 
 # A Liftbook user.
 class User < ApplicationRecord
-  before_validation { |u| u.email = u.email.downcase }
+  has_many :workouts
+
   validates :email, uniqueness: true
+
+  before_validation { |u| u.email = u.email.downcase }
 end
