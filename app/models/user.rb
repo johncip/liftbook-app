@@ -15,6 +15,9 @@ class User < ApplicationRecord
   has_many :workouts
   has_many :entries, through: :workouts
 
+  has_many :lifts
+  has_many :nicknames, through: :lifts
+
   validates :email, uniqueness: true
 
   before_validation { |u| u.email = u.email.downcase }

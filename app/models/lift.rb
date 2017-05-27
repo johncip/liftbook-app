@@ -13,6 +13,7 @@
 class Lift < ApplicationRecord
   belongs_to :user
   has_many :entries
+  has_many :nicknames
 
   validates :name, uniqueness: true
 end
