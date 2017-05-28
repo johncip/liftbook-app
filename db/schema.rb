@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170527225958) do
+ActiveRecord::Schema.define(version: 20170528004824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
-    t.bigint "lift_id"
+    t.bigint "lift_id", null: false
     t.integer "sets", null: false
     t.integer "reps", null: false
     t.text "notes"
@@ -24,13 +24,13 @@ ActiveRecord::Schema.define(version: 20170527225958) do
     t.datetime "updated_at", null: false
     t.decimal "weight", precision: 100, scale: 6, null: false
     t.string "units", null: false
-    t.bigint "workout_id"
+    t.bigint "workout_id", null: false
     t.index ["lift_id"], name: "index_entries_on_lift_id"
     t.index ["workout_id"], name: "index_entries_on_workout_id"
   end
 
   create_table "lifts", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170527225958) do
   end
 
   create_table "nicknames", force: :cascade do |t|
-    t.bigint "lift_id"
+    t.bigint "lift_id", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20170527225958) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.index ["date"], name: "index_workouts_on_date"
     t.index ["user_id"], name: "index_workouts_on_user_id"
   end
