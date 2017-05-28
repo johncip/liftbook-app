@@ -21,10 +21,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validate :settings_units_inclusion
 
-  before_validation { self.email = email.downcase }
   before_validation { self.settings['units'] ||= 'lb' }
 
   private
+  before_validation { self.email = email&.downcase }
 
   def settings_units_inclusion
     unless Entry::UNITS.include?(settings['units'])
