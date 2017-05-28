@@ -19,7 +19,7 @@ class Lift < ApplicationRecord
   validates :name, presence: true, uniqueness: {case_sensitive: false}
   validates :nickname, presence: true, uniqueness: {case_sensitive: false}
 
-  before_save { self.name ||= nickname }
+  before_validation { self.name ||= nickname }
 
   def find_by_nickname(nick)
     User.where("lower(email) = ?", email.downcase).first
