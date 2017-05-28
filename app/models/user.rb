@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :lifts
   has_many :nicknames, through: :lifts
 
-  validates :email, uniqueness: true
+  validates :email, presence: true, uniqueness: {case_sensitive: false}
   validates :units, presence: true
 
   before_validation { email.try(:downcase!) }
@@ -29,4 +29,8 @@ class User < ApplicationRecord
   self.json_column = :settings
   json_attribute :units, :enumeration, values: Entry::UNITS, strict: true
   attribute :units
+
+  def self.find_by_email(email)
+    User.where("lower(email) = ?", email.downcase).first
+  end
 end
