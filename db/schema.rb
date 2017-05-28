@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170528004824) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "lower((name)::text)", name: "lifts_lower_name_idx", unique: true
+    t.index "lower((name)::text), user_id", name: "index_lifts_on_lower_name_text_user_id", unique: true
     t.index ["user_id"], name: "index_lifts_on_user_id"
   end
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20170528004824) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index "lower((name)::text)", name: "nicknames_lower_name_idx", unique: true
+    t.index "lower((name)::text)", name: "index_nicknames_on_lower_name_text", unique: true
     t.index ["lift_id"], name: "index_nicknames_on_lift_id"
   end
 
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20170528004824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "settings", default: {}, null: false
-    t.index "lower((email)::text)", name: "users_lower_email_idx", unique: true
+    t.index "lower((email)::text)", name: "index_users_on_lower_email_text", unique: true
   end
 
   create_table "workouts", force: :cascade do |t|

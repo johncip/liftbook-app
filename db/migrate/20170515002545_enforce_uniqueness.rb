@@ -1,9 +1,7 @@
 class EnforceUniqueness < ActiveRecord::Migration[5.1]
   def change
-    execute <<-SQL
-      CREATE UNIQUE INDEX users_lower_email_idx ON users (LOWER(email));
-      CREATE UNIQUE INDEX lifts_lower_name_idx ON lifts (LOWER(name));
-      CREATE UNIQUE INDEX nicknames_lower_name_idx ON nicknames (LOWER(name));
-    SQL
+    add_index :lifts, "lower((name)::text), user_id", unique: true
+    add_index :nicknames, "lower((name)::text)", unique: true
+    add_index :users, "lower((email)::text)", unique: true
   end
 end
