@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528060327) do
+ActiveRecord::Schema.define(version: 20170528061016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 20170528060327) do
     t.bigint "workout_id", null: false
     t.index ["lift_id"], name: "index_entries_on_lift_id"
     t.index ["workout_id"], name: "index_entries_on_workout_id"
+  end
+
+  create_table "lift_names", force: :cascade do |t|
+    t.bigint "lift_id", null: false
+    t.string "name", null: false
+    t.boolean "main", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index "lower((name)::text)", name: "index_lift_names_on_lower_name_text", unique: true
+    t.index ["lift_id"], name: "index_lift_names_on_lift_id"
+    t.index ["lift_id"], name: "index_main_lift_name_on_lift_id", unique: true, where: "main"
   end
 
   create_table "lifts", force: :cascade do |t|
@@ -58,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170528060327) do
 
   add_foreign_key "entries", "lifts"
   add_foreign_key "entries", "workouts"
+  add_foreign_key "lift_names", "lifts"
   add_foreign_key "lifts", "users"
   add_foreign_key "workouts", "users"
 end
