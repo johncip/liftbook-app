@@ -3,7 +3,7 @@
 # Table name: nicknames
 #
 #  id         :integer          not null, primary key
-#  lift_id    :integer
+#  lift_id    :integer          not null
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

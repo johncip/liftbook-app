@@ -7,7 +7,7 @@
 #  notes      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  user_id    :integer
+#  user_id    :integer          not null
 #
 
 # TODO: Workouts need some kind of user-friendly unique identifier.
