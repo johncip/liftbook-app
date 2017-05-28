@@ -23,7 +23,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :units, presence: true
 
-  before_validation { self.email = email&.downcase }
+  before_validation { email.try(:downcase!) }
   before_validation { self.units ||= 'lb' }
 
   self.json_column = :settings
