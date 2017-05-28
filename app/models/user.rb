@@ -12,6 +12,8 @@
 
 # A Liftbook user.
 class User < ApplicationRecord
+  include ArDocStore::Model
+
   has_many :workouts
   has_many :entries, through: :workouts
 
@@ -19,16 +21,12 @@ class User < ApplicationRecord
   has_many :nicknames, through: :lifts
 
   validates :email, uniqueness: true
-  validate :settings_units_inclusion
+  validates :units, presence: true
 
-  before_validation { self.settings['units'] ||= 'lb' }
-
-  private
   before_validation { self.email = email&.downcase }
+  before_validation { self.units ||= 'lb' }
 
-  def settings_units_inclusion
-    unless Entry::UNITS.include?(settings['units'])
-      errors.add(:settings, "units must be in #{Entry::UNITS}")
-    end
-  end
+  self.json_column = :settings
+  json_attribute :units, :enumeration, values: Entry::UNITS, strict: true
+  attribute :units
 end

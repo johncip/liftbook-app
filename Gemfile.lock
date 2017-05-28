@@ -41,6 +41,9 @@ GEM
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
+    ar_doc_store (1.0.1)
+      activerecord
+      pg (~> 0.17)
     arel (8.0.0)
     ast (2.3.0)
     awesome_print (1.7.0)
@@ -219,6 +222,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  ar_doc_store
   byebug
   coffee-rails (~> 4.2)
   jazz_fingers
