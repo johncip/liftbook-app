@@ -87,6 +87,9 @@ Style/ConstantName:
   Exclude:
     - 'app/uploaders/base_uploader.rb'
 
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
