@@ -1,7 +1,8 @@
 def create_user_content(user)
   bench = Lift.create!(
     user: user,
-    name: 'Bench Press'
+    name: 'Bench Press',
+    nickname: 'bench'
   )
   workout = Workout.create!(
     user: user,
