@@ -19,6 +19,16 @@ class User < ApplicationRecord
   has_many :nicknames, through: :lifts
 
   validates :email, uniqueness: true
+  validate :settings_units_inclusion
 
   before_validation { self.email = email.downcase }
+  before_validation { self.settings['units'] ||= 'lb' }
+
+  private
+
+  def settings_units_inclusion
+    unless Entry::UNITS.include?(settings['units'])
+      errors.add(:settings, "units must be in #{Entry::UNITS}")
+    end
+  end
 end
