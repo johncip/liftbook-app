@@ -20,5 +20,6 @@ class Entry < ApplicationRecord
   belongs_to :workout
 
   before_save -> { self.units ||= :lb }
-  validates :units, inclusion: { in: %w(lb kg) }
+  UNITS = %w(lb kg).freeze
+  validates :units, inclusion: { in: UNITS }
 end
