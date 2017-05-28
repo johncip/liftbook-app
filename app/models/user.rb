@@ -20,5 +20,5 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
 
-  before_validation { |u| u.email = u.email.downcase }
+  before_validation { self.email = email.downcase }
 end
