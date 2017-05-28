@@ -3,10 +3,6 @@ def create_user_content(user)
     user: user,
     name: 'Bench Press'
   )
-  bench.nicknames.create!(
-    lift: bench,
-    name: 'bp'
-  )
   workout = Workout.create!(
     user: user,
     name: 'Chest Day',
