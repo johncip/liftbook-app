@@ -11,6 +11,7 @@
 #  name       :string           default("New Workout"), not null
 #
 
+# A collection of Entries.
 class Workout < ApplicationRecord
   belongs_to :user
   has_many :entries

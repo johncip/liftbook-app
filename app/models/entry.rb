@@ -14,7 +14,7 @@
 #  workout_id :integer          not null
 #
 
-# A workout log entry.
+# A Liftbook log entry.
 class Entry < ApplicationRecord
   belongs_to :lift
   belongs_to :workout
