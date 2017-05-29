@@ -18,7 +18,6 @@ def create_user_content(user)
   )
 end
 
-
 john = User.create!(
   name: 'John',
   email: 'john@liftbook.io'
