@@ -67,7 +67,7 @@ class EntriesController < ApplicationController
     @entry.units ||= current_user.units
 
     return if params[:lift_id]
-    @entry.lift = Lift.find_or_create_by(user: current_user, nickname: lift_params[:nickname])
+    @entry.lift = Lift.find_or_create_by_user_and_nickname(current_user, lift_params[:nickname])
   end
 
   def render_error_json
