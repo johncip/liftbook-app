@@ -22,6 +22,6 @@ class Lift < ApplicationRecord
   before_validation { self.name ||= nickname }
 
   def find_by_nickname(nick)
-    User.where("lower(email) = ?", email.downcase).first
+    User.where('lower(nickname) = ?', nick.downcase).first
   end
 end
