@@ -1,3 +1,4 @@
+# :reek:UtilityFunction
 def create_user_content(user)
   bench = Lift.create!(
     user: user,
