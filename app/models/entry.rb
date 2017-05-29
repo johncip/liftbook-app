@@ -23,4 +23,6 @@ class Entry < ApplicationRecord
   validates :units, inclusion: { in: UNITS }
 
   before_validation { self.units ||= :lb }
+
+  delegate :nickname, to: :lift
 end
