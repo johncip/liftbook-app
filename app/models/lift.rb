@@ -21,7 +21,7 @@ class Lift < ApplicationRecord
 
   before_validation { self.name ||= nickname }
 
-  def find_by_nickname(nick)
-    User.where('lower(nickname) = ?', nick.downcase).first # rubocop:disable Rails/FindBy
+  def self.find_by_nickname(nickname)
+    User.where('lower(nickname) = ?', nickname.downcase).first # rubocop:disable Rails/FindBy
   end
 end
