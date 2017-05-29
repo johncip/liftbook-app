@@ -1,0 +1,25 @@
+h1 = @workout.date.to_formatted_s(:month_day_year)
+h2 = @workout.name
+
+table
+  tbody
+    - @entries.each do |entry|
+      tr
+        td = entry.nickname
+        td = "#{entry.sets} x"
+        td = "#{entry.reps} @"
+        td = pluralize(entry.weight, entry.units)
+        td = link_to 'X',
+          workout_entry_path(@workout, entry),
+          data: { confirm: 'Are you sure?' },
+          method: :delete
+
+- @lift = Lift.new
+- @entry = Entry.new(lift: @lift, workout: @workout)
+= form_for @entry, url: create_from_nickname_workout_entries_path(@workout) do |f|
+  = fields_for @entry.lift do |lift_fields|
+    = lift_fields.text_field :nickname
+  = f.text_field :sets
+  = f.text_field :reps
+  = f.text_field :weight
+  = f.submit
