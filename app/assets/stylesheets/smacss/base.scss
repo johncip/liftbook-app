@@ -1,16 +1,18 @@
+@import 'variables';
+
 body {
   background-color: #eee;
   color: #333;
   margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-family: $font-stack;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-family: $font-stack;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
 }
 
 pre {
