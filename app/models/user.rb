@@ -31,6 +31,6 @@ class User < ApplicationRecord
   attribute :units
 
   def self.find_by_email(email)
-    User.where("lower(email) = ?", email.downcase).first
+    User.where('lower(email) = ?', email.downcase).first # rubocop:disable Rails/FindBy
   end
 end
