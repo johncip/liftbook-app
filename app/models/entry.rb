@@ -12,6 +12,7 @@
 #  weight     :decimal(100, 6)  not null
 #  units      :string           not null
 #  workout_id :integer          not null
+#  order      :integer          default("0"), not null
 #
 
 # A Liftbook log entry.
