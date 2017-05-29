@@ -47,6 +47,7 @@ Metrics/MethodLength:
   Max: 15
   Exclude:
     - 'db/migrate/*'
+    - 'db/seeds.rb'
 
 Metrics/ModuleLength:
   Max: 150
