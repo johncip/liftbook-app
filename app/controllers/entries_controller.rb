@@ -11,38 +11,66 @@
 #  workout_id :integer
 
 class EntriesController < ApplicationController
-  def create
-    initialize_entry
+  before_action :load_workout
+  before_action :load_entry, only: [:destroy]
+  before_action :initialize_entry, only: [:create, :create_from_nickname]
 
+  def index
+    @entries = @workout.entries
+  end
+
+  def create
     if @entry.save
       render json: @entry
     else
-      render json: {status: 'error', messages: @entry.errors.message}, status: 500
+      render_error_json
     end
   end
 
   def create_from_nickname
-    initialize_entry
-
     if @entry.save
-      render json: @entry
+      redirect_to workout_entries_path(@workout)
     else
-      render json: {status: 'error', messages: @entry.errors.messages}, status: 500
+      render_error_json
+    end
+  end
+
+  def destroy
+    if @entry.delete
+      redirect_to workout_entries_path(@workout)
+    else
+      render_error_json
     end
   end
 
   private
 
   def entry_params
-    params.require(:entry).permit(%i[lift_id lift_name sets reps notes weight units])
+    params.require(:entry).permit(*%i[lift_id lift_name sets reps notes weight units])
+  end
+
+  def lift_params
+    params.require(:lift).permit(:nickname)
+  end
+
+  def load_entry
+    @entry = Entry.find(params[:id])
+  end
+
+  def load_workout
+    @workout = Workout.find(params[:workout_id])
   end
 
   def initialize_entry
-    @entry = Entry.new(entry_params)
+    @entry = @workout.entries.new
+    @entry.update_attributes(entry_params)
     @entry.units ||= current_user.units
 
-    unless params[:lift_id]
-      @entry.lift = Lift.find_or_create_by(user: current_user, nickname: params[:lift_name])
-    end
+    return if params[:lift_id]
+    @entry.lift = Lift.find_or_create_by(user: current_user, nickname: lift_params[:nickname])
+  end
+
+  def render_error_json
+    render json: {status: 'error', messages: @entry.errors.messages}, status: 500
   end
 end
