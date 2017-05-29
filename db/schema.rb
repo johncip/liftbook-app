@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528074837) do
+ActiveRecord::Schema.define(version: 20170529212707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20170528074837) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "nickname", null: false
+    t.string "nickname", default: "new", null: false
     t.index "lower((name)::text), user_id", name: "index_lifts_on_lower_name_text_user_id", unique: true
     t.index "lower((nickname)::text)", name: "index_lifts_on_lower_nickname_text", unique: true
     t.index ["user_id"], name: "index_lifts_on_user_id"
