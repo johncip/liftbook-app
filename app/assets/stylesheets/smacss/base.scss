@@ -47,3 +47,11 @@ div {
     margin-bottom: 10px;
   }
 }
+
+input[type=text] {
+  padding: 4px;
+  margin: 2px;
+  border: solid 1px $gray-light;
+  border-radius: 2px;
+  font-size: $font-size-base;
+}
