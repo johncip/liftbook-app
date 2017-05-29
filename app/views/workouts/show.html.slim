@@ -1,7 +1,0 @@
-ul
-  li = @workout.name
-  li = @workout.date
-  li
-    ul
-      - @workout.entries.each do |en|
-        li = "#{en.lift.name}: #{en.sets}x#{en.reps} @ #{en.weight}"
