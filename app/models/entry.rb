@@ -19,8 +19,8 @@ class Entry < ApplicationRecord
   belongs_to :lift
   belongs_to :workout
 
-  UNITS = %w(lb kg).freeze
-  validates :units, inclusion: { in: UNITS }
+  UNITS = %w[lb kg].freeze
+  validates :units, inclusion: {in: UNITS}
 
   before_validation { self.units ||= :lb }
 

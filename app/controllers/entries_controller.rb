@@ -46,7 +46,7 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(*%i[lift_id lift_name sets reps notes weight units])
+    params.require(:entry).permit(:lift_id, :lift_name, :sets, :reps, :notes, :weight, :units)
   end
 
   def lift_params
