@@ -8,8 +8,8 @@ table
         td = entry.nickname
         td = "#{entry.sets} x"
         td = "#{entry.reps} @"
-        td = pluralize(entry.weight, entry.units)
         td = link_to 'X',
+        td = pretty_weight(entry)
           workout_entry_path(@workout, entry),
           data: { confirm: 'Are you sure?' },
           method: :delete
