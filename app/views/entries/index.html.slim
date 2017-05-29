@@ -8,8 +8,8 @@ table
         td = entry.nickname
         td = "#{entry.sets} x"
         td = "#{entry.reps} @"
-        td = link_to 'X',
         td = pretty_weight(entry)
+        td = link_to inline_svg('delete.svg', class: 'btn-delete'),
           workout_entry_path(@workout, entry),
           data: { confirm: 'Are you sure?' },
           method: :delete
