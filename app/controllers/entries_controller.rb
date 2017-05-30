@@ -63,6 +63,7 @@ class EntriesController < ApplicationController
 
   def initialize_entry
     @entry = @workout.entries.new(entry_params)
+    @entry.order = entry_params[:order] || @workout.next_index
     @entry.units ||= current_user.units
 
     return if entry_params[:lift_id]
