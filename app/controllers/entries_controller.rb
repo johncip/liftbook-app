@@ -62,8 +62,7 @@ class EntriesController < ApplicationController
   end
 
   def initialize_entry
-    @entry = @workout.entries.new
-    @entry.update_attributes(entry_params)
+    @entry = @workout.entries.new(entry_params)
     @entry.units ||= current_user.units
 
     return if entry_params[:lift_id]
