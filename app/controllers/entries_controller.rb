@@ -66,7 +66,7 @@ class EntriesController < ApplicationController
     @entry.update_attributes(entry_params)
     @entry.units ||= current_user.units
 
-    return if params[:lift_id]
+    return if entry_params[:lift_id]
     @entry.lift = Lift.find_or_create_by_user_and_nickname(current_user, lift_params[:nickname])
   end
 
