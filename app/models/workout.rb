@@ -15,4 +15,9 @@
 class Workout < ApplicationRecord
   belongs_to :user
   has_many :entries, -> { order(:order, :created_at) }
+
+  # Returns the order value for a new entry, in sequence.
+  def next_index
+    (entries.pluck(:order).max || []) + 1
+  end
 end
