@@ -7,7 +7,7 @@
 #  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  nickname   :string           not null
+#  nickname   :string           default("new"), not null
 #
 
 # A unique lift within this user's workout log.
