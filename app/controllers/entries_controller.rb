@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
   before_action :initialize_entry, only: [:create, :create_from_nickname]
 
   def index
-    @entries = @workout.entries
+    @entries = @workout.entries.includes(:lift)
   end
 
   def create
