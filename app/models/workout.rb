@@ -14,5 +14,5 @@
 # A collection of Entries.
 class Workout < ApplicationRecord
   belongs_to :user
-  has_many :entries
+  has_many :entries, -> { order(:order, :created_at) }
 end
